@@ -1,29 +1,21 @@
 <!--
  * @Date: 2022-01-21 16:09:17
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-01-26 17:38:06
+ * @LastEditTime: 2022-01-27 11:44:13
  * @FilePath: /vue3-study/src/App.vue
 -->
 <template>
-  <div class="main">
-    <Left></Left>
-    <Right ref="dom"></Right>
-  </div>
+  <div class="main">123</div>
 </template>
 
 <script>
-import { provide, ref, computed, onMounted } from 'vue'
-import Left from '@/components/Left.vue'
-import Right from '@/components/Right.vue'
+import { provide, ref, computed } from 'vue'
 import articles from '@/config/articles.js'
 import { useLocalStorage } from '@vueuse/core'
 
 export default {
   name: 'App',
-  components: {
-    Left,
-    Right
-  },
+  components: {},
   setup () {
     useLocalStorage('my-store', { hello: 'hi', greeting: 'Hello' })
     const activeIdx = ref(0)
@@ -35,11 +27,6 @@ export default {
     provide('updateActiveIdx', (val) => {
       activeIdx.value = val
     })
-    const dom = ref(null)
-    onMounted(() => {
-      console.log(dom.value.store.hello, '---')
-    })
-    return { dom }
   }
 }
 </script>
