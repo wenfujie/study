@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@vueuse/core": "^7.5.4",
+    "@vueuse/integrations": "^7.5.5",
+    "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "lib-flexible": "^0.3.2",
     "vue": "^3.0.0"
@@ -19,7 +21,9 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-standard": "^5.1.2",
+    "@wenfujie/vue-cli-plugin-mock": "~1.0.0",
     "babel-eslint": "^10.1.0",
+    "chokidar": "2.1.5",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
@@ -28,6 +32,7 @@
     "eslint-plugin-vue": "^7.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "mockjs": "^1.0.1-beta3",
     "postcss-pxtorem": "^5.1.1"
   }
 }
