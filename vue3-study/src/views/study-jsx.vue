@@ -1,19 +1,15 @@
 <!--
  * @Date: 2022-01-28 11:33:17
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-01-28 17:22:24
+ * @LastEditTime: 2022-01-28 17:26:07
  * @FilePath: /vue3-study/src/views/study-jsx.vue
 -->
 
 <script>
-import { onMounted } from 'vue'
 // import { ref } from 'vue'
 export default {
   emits: ['customEvent'],
   setup (props, { slots, emit }) {
-    onMounted(() => {
-      emit('customEvent')
-    })
     /** v-if v-for */
     // const data = [{ id: 1, content: '静夜诗' }]
     // return () => {
@@ -63,8 +59,8 @@ export default {
 
     /** 接收 emit */
     // emit('customEvent')
-    const fn = () => {}
-    return <demo onCustomEvent={fn}></demo>
+    // const fn = () => {}
+    // return <demo onCustomEvent={fn}></demo>
   }
 }
 </script>
