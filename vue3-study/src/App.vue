@@ -1,19 +1,25 @@
 <!--
  * @Date: 2022-01-21 16:09:17
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-01-28 11:53:26
+ * @LastEditTime: 2022-01-28 17:08:47
  * @FilePath: /vue3-study/src/App.vue
 -->
 
 <script>
 import { goodsDom, getGood } from '@/App.js'
+import StudyJsx from '@/views/study-jsx.vue'
 
 export default {
+  components: { StudyJsx },
   setup () {
     getGood()
+    const fn = () => {
+      console.log(11)
+    }
     return () => (
       <>
         <ul>{goodsDom()}</ul>
+        <StudyJsx onCustomEvent={fn} />
       </>
     )
   }
