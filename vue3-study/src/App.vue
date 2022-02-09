@@ -1,25 +1,28 @@
 <!--
  * @Date: 2022-01-21 16:09:17
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-01-28 17:08:47
+ * @LastEditTime: 2022-01-29 09:51:35
  * @FilePath: /vue3-study/src/App.vue
 -->
 
 <script>
 import { goodsDom, getGood } from '@/App.js'
 import StudyJsx from '@/views/study-jsx.vue'
+import { useStore } from '@/stores/goods'
 
 export default {
   components: { StudyJsx },
   setup () {
+    const store = useStore()
+    const add = () => store.count++
+
     getGood()
-    const fn = () => {
-      console.log(11)
-    }
+
     return () => (
       <>
+        <div>合计的值：{store.count}</div>
+        <button onClick={add}>相加</button>
         <ul>{goodsDom()}</ul>
-        <StudyJsx onCustomEvent={fn} />
       </>
     )
   }
