@@ -1,9 +1,4 @@
-<!--
- * @Date: 2021-11-12 14:17:30
- * @LastEditors: wenfujie
- * @LastEditTime: 2021-11-17 13:59:43
- * @FilePath: /play-ts/README.md
--->
+
 
 - [学习 typescript](#学习-typescript)
   - [指令](#指令)
