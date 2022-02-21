@@ -211,9 +211,32 @@ const str2 = "hello"; // str2: 'hello'
 
 这是由于 const 定义变量值不会改变，这样就缩小了变量的类型范围。
 
+
+
 ### 类型断言
 
-// TODO:
+语法
+
+```ts
+// 1、尖括号语法
+<类型表达式>值
+
+// 2、as语法
+值 as 类型表达式
+```
+
+为了避免和 `JSX` 语法产生冲突，尖括号语法只能在 `tsx` 文件中使用
+
+```ts
+let someValue: any = "this is a string";
+
+// 1、尖括号语法
+let strLength: number = (<string>someValue).length;
+// 2、as语法
+let strLength: number = (someValue as string).length;
+```
+
+
 
 
 ### interface 接口类型 
@@ -786,4 +809,3 @@ declare module "vue/types/vue" {
 
 [Vue结合ts组件写法](src/components/HelloWorld.vue)
 
-未完待续..
