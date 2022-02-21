@@ -7,11 +7,13 @@
     - [类型断言](#类型断言)
     - [interface 接口类型](#interface-接口类型)
     - [type 类型别名](#type-类型别名)
+    - [keyof 类型索引](#keyof-类型索引)
     - [| & 高级类型：联合、交叉、合并接口类型](#--高级类型联合交叉合并接口类型)
     - [枚举类型](#枚举类型)
     - [泛型](#泛型)
       - [语法](#语法-1)
       - [多种类型泛型的使用](#多种类型泛型的使用)
+      - [泛型工具](#泛型工具)
       - [泛型约束](#泛型约束)
       - [默认类型](#默认类型)
   - [Vue 项目中使用 ts](#vue-项目中使用-ts)
@@ -378,6 +380,18 @@ const boxTransition: transition = 'EASE';
 ```
 
 
+### keyof 类型索引
+```ts
+interface A {
+  a: string,
+  b: number
+}
+// 等效于 'a' | 'b'
+type customType = keyof A
+let param: customType = 'a'
+```
+
+
 
 ### | & 高级类型：联合、交叉、合并接口类型
 
@@ -684,6 +698,29 @@ function fn(){};
 let c: Identity<typeof fn> = {
   attr(){}
 }
+```
+
+
+#### 泛型工具
+`Partial` 用于将一个接口的所有属性设置为可选状态，反之，`Required` 则是将所有属性改为必须状态。
+
+```js
+type Person = {
+  id: string;
+  age: number;
+  name: string;
+}
+// 等价{ id?:string, age?:number, name?:string }
+type NewPerson = Partial<Person>
+```
+
+
+
+`Pick` 主要用于提取接口的某几个属性，反之，`Omit` 用于剔除部分属性。
+
+```typescript
+// 等价 {id: string, age: number }
+type NewPickPerson = Pick<Person, 'id' | 'age' >
 ```
 
 
