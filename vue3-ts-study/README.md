@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-02-12 11:33:53
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-22 10:11:37
+ * @LastEditTime: 2022-02-22 18:20:43
  * @FilePath: /vue3-ts-study/README.md
 -->
 - [项目介绍](#项目介绍)
@@ -19,6 +19,7 @@
 若对 `vue3` 不熟悉可先[前往学习vue3](https://github.com/wenfujie/document-library/blob/master/articles/Vue/Vue3%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B.md)
 
 ## 工程搭建问题
+- [vue3 setup 语法糖 + ts 最佳写法](src/components/howToWrite/vue3AndTsWrite.vue)
 - [如何请求接口](src/components/useApi/useApi.vue)
 - [为第三方包添加属性方法提示](src/components/usePackage/useLodash.vue)
 

@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-02-22 10:51:58
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-22 17:25:07
+ * @LastEditTime: 2022-02-22 18:32:44
  * @FilePath: /vue3-ts-study/src/components/howToWrite/vue3AndTsWrite.vue
 -->
 <template>
@@ -89,4 +89,7 @@ const emit = defineEmits<{
   (e: "change", id?: number ): void;
 }>();
 emit("change", 123);
+
+/** provide/inject */
+provide('form', form)
 </script>
