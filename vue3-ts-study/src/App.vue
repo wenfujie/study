@@ -1,27 +1,29 @@
 <!--
  * @Date: 2022-02-12 11:33:45
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-14 13:46:39
+ * @LastEditTime: 2022-02-22 17:30:47
  * @FilePath: /vue3-ts-study/src/App.vue
 -->
 <template>
-  <SetupCom />
-  <TsCom />
   <UseApi />
+  <vue3AndTsWrite :foo="{ userName: 'wfj', password: 'wfj'}" @change="change" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import SetupCom from "./components/SetupCom.vue";
-import TsCom from "./components/TsCom.vue";
 import UseApi from "@/components/useApi/useApi.vue";
+import vue3AndTsWrite from "@/components/howToWrite/vue3AndTsWrite.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    SetupCom,
-    TsCom,
-    UseApi
+    UseApi,
+    vue3AndTsWrite
+  },
+  methods: {
+    change(id?: number){
+      console.log(id, '----id----');
+    }
   }
 });
 </script>
@@ -31,7 +33,6 @@ export default defineComponent({
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
