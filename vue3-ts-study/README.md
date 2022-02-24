@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-02-12 11:33:53
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-22 18:20:43
+ * @LastEditTime: 2022-02-24 22:55:31
  * @FilePath: /vue3-ts-study/README.md
 -->
 - [项目介绍](#项目介绍)
@@ -20,7 +20,9 @@
 
 ## 工程搭建问题
 - [vue3 setup 语法糖 + ts 最佳写法](src/components/howToWrite/vue3AndTsWrite.vue)
+- [axios 封装](src/utils/request.ts)
 - [如何请求接口](src/components/useApi/useApi.vue)
+- [vuex使用](src/store/index.ts)
 - [为第三方包添加属性方法提示](src/components/usePackage/useLodash.vue)
 
 ## 提升效率的包

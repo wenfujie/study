@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-02-15 14:56:10
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-15 15:11:58
+ * @LastEditTime: 2022-02-24 22:48:37
  * @FilePath: /vue3-ts-study/src/components/typeNarrowing/index.vue
  * @Describes: 类型缩窄的几种形式
 -->
@@ -10,7 +10,7 @@
 </template>
 <script lang="ts" setup>
 /**
- * TODO: 一、as 类型断言
+ * 一、as 类型断言
  */
 
 /**
