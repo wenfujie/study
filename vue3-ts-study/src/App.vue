@@ -1,12 +1,15 @@
 <!--
  * @Date: 2022-02-12 11:33:45
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-22 17:30:47
+ * @LastEditTime: 2022-02-23 14:03:20
  * @FilePath: /vue3-ts-study/src/App.vue
 -->
 <template>
   <UseApi />
-  <vue3AndTsWrite :foo="{ userName: 'wfj', password: 'wfj'}" @change="change" />
+  <vue3AndTsWrite
+    :foo="{ userName: 'wfj', password: 'wfj' }"
+    @change="change"
+  />
 </template>
 
 <script lang="ts">
@@ -21,9 +24,15 @@ export default defineComponent({
     vue3AndTsWrite
   },
   methods: {
-    change(id?: number){
-      console.log(id, '----id----');
+    change(id?: number) {
+      console.log(id, "----id----");
     }
+  },
+  created() {
+    /** TODO: 
+     * 使用pinia
+     * 过滤一遍支付项目
+     */
   }
 });
 </script>

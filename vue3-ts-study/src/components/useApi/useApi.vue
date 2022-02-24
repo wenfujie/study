@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-02-14 12:02:19
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-22 18:00:35
+ * @LastEditTime: 2022-02-24 17:46:22
  * @FilePath: /vue3-ts-study/src/components/useApi/useApi.vue
 -->
 <template>
@@ -12,14 +12,18 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { onMounted } from "vue";
-import { getUser } from "@/api";
+import { getUser, updateUser } from "@/api";
 
 // 使用 ts 全局类型 【src/typings/domain.d.ts】
-let list = ref<Domains.ListItem[]>([]);
+let list = ref<Domains.Users>([]);
 
-onMounted(async () => {
-  const { data } = await getUser({});
-  list.value = data;
-});
+const callback = (res: Domains.Users) => {
+  list.value = res;
+};
+
+getUser().then((res) => callback(res));
+
+setTimeout(() => {
+  updateUser().then((res) => callback(res));
+},2000);
 </script>

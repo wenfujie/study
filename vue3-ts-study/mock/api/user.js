@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-02-14 10:55:04
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-14 11:15:06
+ * @LastEditTime: 2022-02-24 16:44:56
  * @FilePath: /vue3-ts-study/mock/api/user.js
  */
 module.exports = [
@@ -17,7 +17,23 @@ module.exports = [
           }
         ],
         msg: "ok",
-        state: 0
+        code: 0
+      };
+    }
+  },
+  {
+    url: "/updateUser",
+    type: "post",
+    response: (_) => {
+      return {
+        data: [
+          {
+            id: "1",
+            name: "lisi"
+          }
+        ],
+        msg: "ok",
+        code: 0
       };
     }
   }
