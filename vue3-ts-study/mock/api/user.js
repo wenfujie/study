@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-02-14 10:55:04
  * @LastEditors: wenfujie
- * @LastEditTime: 2022-02-24 16:44:56
+ * @LastEditTime: 2022-02-25 14:18:32
  * @FilePath: /vue3-ts-study/mock/api/user.js
  */
 module.exports = [
@@ -13,7 +13,8 @@ module.exports = [
         data: [
           {
             id: "1",
-            name: "zhangsan"
+            name: "zhangsan",
+            age: 26
           }
         ],
         msg: "ok",
@@ -29,7 +30,8 @@ module.exports = [
         data: [
           {
             id: "1",
-            name: "lisi"
+            name: "lisi",
+            age: 26
           }
         ],
         msg: "ok",
