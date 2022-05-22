@@ -285,7 +285,7 @@ let OptionalTypeScript: OptionalProgramLanguage = {
 
 ```js
 interface data {
-  name: string;
+  readonly name: string;
 }
 let obj: data = {
   name: "张三",
