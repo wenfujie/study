@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import BaseModal from './components/BaseModal.vue'
 import {
   calculateExpenseTotal,
   normalizeExpenseAmountInput,
 } from './utils/expenseAmount.js'
+import { convertExpenseRowsToMarkdownTable } from './utils/expenseMarkdown.js'
 
 type ExpenseRow = {
   id: number
@@ -11,17 +13,32 @@ type ExpenseRow = {
   expenseAmount: string
 }
 
+type CopyStatus = 'idle' | 'success' | 'error'
+
 const rows = ref<ExpenseRow[]>([
   { id: 1, expenseItem: '', expenseAmount: '' },
   { id: 2, expenseItem: '', expenseAmount: '' },
   { id: 3, expenseItem: '', expenseAmount: '' },
 ])
 
+const isMarkdownModalOpen = ref(false)
+const markdownDraft = ref('')
+const copyStatus = ref<CopyStatus>('idle')
+
 const totalAmount = computed(() =>
   calculateExpenseTotal(rows.value.map((row) => row.expenseAmount)),
 )
 
 const displayAmount = computed(() => totalAmount.value.toFixed(2))
+const copyStatusText = computed(() => {
+  if (copyStatus.value === 'success') {
+    return '已复制到剪切板'
+  }
+  if (copyStatus.value === 'error') {
+    return '复制失败，请手动复制'
+  }
+  return ''
+})
 
 function updateExpenseItem(id: number, value: string) {
   const row = rows.value.find((entry) => entry.id === id)
@@ -45,6 +62,30 @@ function addRow() {
     expenseItem: '',
     expenseAmount: '',
   })
+}
+
+function openMarkdownModal() {
+  markdownDraft.value = convertExpenseRowsToMarkdownTable(rows.value)
+  copyStatus.value = 'idle'
+  isMarkdownModalOpen.value = true
+}
+
+function closeMarkdownModal() {
+  isMarkdownModalOpen.value = false
+  markdownDraft.value = ''
+  copyStatus.value = 'idle'
+}
+
+async function copyMarkdown() {
+  try {
+    if (!navigator?.clipboard?.writeText) {
+      throw new Error('Clipboard API unavailable')
+    }
+    await navigator.clipboard.writeText(markdownDraft.value)
+    copyStatus.value = 'success'
+  } catch {
+    copyStatus.value = 'error'
+  }
 }
 </script>
 
@@ -100,9 +141,33 @@ function addRow() {
       </div>
 
       <div class="footer-bar">
-        <button type="button" class="ghost-btn" @click="addRow">新增一行</button>
+        <div class="footer-actions">
+          <button type="button" class="ghost-btn" @click="addRow">新增一行</button>
+          <button type="button" class="ghost-btn secondary" @click="openMarkdownModal">
+            markdown表格转换
+          </button>
+        </div>
         <p class="total">总金额：<strong>{{ displayAmount }}</strong></p>
       </div>
     </section>
+
+    <BaseModal
+      :open="isMarkdownModalOpen"
+      title="Markdown 表格转换"
+      @close="closeMarkdownModal"
+    >
+      <textarea
+        v-model="markdownDraft"
+        class="markdown-textarea"
+        rows="10"
+        placeholder="Markdown 表格代码"
+      />
+      <p class="copy-status" :class="copyStatus">{{ copyStatusText }}</p>
+
+      <template #actions>
+        <button type="button" class="ghost-btn secondary" @click="copyMarkdown">复制</button>
+        <button type="button" class="ghost-btn" @click="closeMarkdownModal">关闭</button>
+      </template>
+    </BaseModal>
   </main>
 </template>

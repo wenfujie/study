@@ -126,6 +126,12 @@ h1 {
   padding: 16px 24px 24px;
 }
 
+.footer-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .ghost-btn {
   border: 1px solid var(--line);
   background: var(--accent-soft);
@@ -134,6 +140,10 @@ h1 {
   padding: 9px 16px;
   font: 700 0.92rem/1 var(--sans);
   cursor: pointer;
+}
+
+.ghost-btn.secondary {
+  background: #f6f2ea;
 }
 
 .total {
@@ -145,6 +155,92 @@ h1 {
   font-family: var(--mono);
   color: var(--accent);
   font-size: 1.2rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 23, 19, 0.52);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 20;
+}
+
+.modal-panel {
+  width: min(720px, 100%);
+  border-radius: 20px;
+  background: #fffdf8;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(16, 25, 22, 0.28);
+  padding: 18px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.16rem;
+}
+
+.modal-close-icon {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.modal-body {
+  margin-bottom: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.markdown-textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  resize: vertical;
+  min-height: 220px;
+  font: 500 0.94rem/1.45 var(--mono);
+  color: var(--ink);
+  background: #fff;
+}
+
+.markdown-textarea:focus {
+  outline: none;
+  border-color: #74a293;
+  box-shadow: 0 0 0 4px rgba(148, 196, 181, 0.24);
+}
+
+.copy-status {
+  margin: 8px 4px 0;
+  min-height: 1.2em;
+  font-size: 0.86rem;
+}
+
+.copy-status.success {
+  color: #1f7a52;
+}
+
+.copy-status.error {
+  color: #ab2d29;
 }
 
 @keyframes rise-in {
@@ -172,5 +268,18 @@ h1 {
   .footer-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .modal-overlay {
+    padding: 12px;
+  }
+
+  .modal-panel {
+    padding: 14px;
+  }
+
+  .modal-actions {
+    width: 100%;
+    justify-content: space-between;
   }
 }
